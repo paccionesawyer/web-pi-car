@@ -6,8 +6,6 @@ In the figure below, what you see is a LEGO Spike Prime connected to two motors 
 
 ![Labelled Diagram](https://github.com/paccionesawyer/web-pi-car/blob/main/assets/PI_CAR_Labelled.jpg)
 
-![GUI](https://github.com/paccionesawyer/web-pi-car/blob/main/assets/gui.jpg)
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -27,6 +25,8 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installing
 
 Simply download the files in this repository and first run the code on the WIO Terminal using the Arduino IDE. Then run the SPIKE PRIME Code in REPL or the IDE that can be found here, [SPIKE PRIME IDE](https://github.com/chrisbuerginrogers/ME35_21). To run the PI code, use <code>flask run --host=0.0.0.0</code>. The file must be named <code>app.py</code>. This will start a webpage on your Raspberry Pi being served to port 5000.
+
+![GUI](https://github.com/paccionesawyer/web-pi-car/blob/main/assets/gui.jpg)
 
 ## Authors
 
