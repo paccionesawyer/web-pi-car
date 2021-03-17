@@ -12,7 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- [Raspberry Pi 4](https://www.google.com/search?q=raspberry+pi+4&sxsrf=ALeKk03vsMgGCu7PQVxu5BVM5yzeNxULQw:1613717510216&source=lnms&tbm=shop&sa=X&ved=2ahUKEwjM7dqXrvXuAhWYWc0KHdwgBTIQ_AUoAXoECAUQAw&biw=958&bih=1087) x2
+- [Raspberry Pi 4](https://www.google.com/search?q=raspberry+pi+4&sxsrf=ALeKk03vsMgGCu7PQVxu5BVM5yzeNxULQw:1613717510216&source=lnms&tbm=shop&sa=X&ved=2ahUKEwjM7dqXrvXuAhWYWc0KHdwgBTIQ_AUoAXoECAUQAw&biw=958&bih=1087)
   - Libraries
     - [Flask](https://flask.palletsprojects.com/en/1.1.x/) 3.4.6
     - [OpenCV](https://pypi.org/project/opencv-python/) 1.02
