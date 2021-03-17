@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Lego Pi Car</title>
+		<script type="text/javascript">
+			function sendCmd(type) {
+				$.post(
+					"cmd",
+					{
+						type: type,
+					},
+					function (data, status) {
+						console.log("Sending cmd to server: " + type);
+					}
+				);
+			}
+		</script>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+			crossorigin="anonymous"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<title>Pi Car!</title>
+	</head>
+	<body>
+		<!-- partial:index.partial.html -->
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<h3 class="mt-5">Live Feed: PICAR</h3>
+					<img src="{{ url_for('video_feed') }}" width="100%" />
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="row-sm">
+					<div class="col-sm"><div id="root"></div></div>
+					<div class="col-sm"><div id="power"></div></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- partial -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@react-spring/web@9.0.0-rc.3/index.umd.js"></script>
+		<script src="https://odintsov.me/static/libs/react-use-gesture.js"></script>
+		<script src="{{url_for('static', filename='slider2.js')}}"></script>
+		<script src="{{url_for('static', filename='pureknob2.js')}}"></script>
+		<script type="text/javascript">
+			// <![CDATA[
+
+			/*
+			 * Demo code for knob element.
+			 */
+			function demoKnob() {
+				// Create knob element, 300 x 300 px in size.
+				const knob = pureknob.createKnob(300, 300);
+
+				// Set properties.
+				knob.setProperty("angleStart", -Math.PI);
+				knob.setProperty("angleEnd", Math.PI);
+				knob.setProperty("colorFG", "#6cc04a");
+				knob.setProperty("trackWidth", 0.4);
+				knob.setProperty("valMin", -180);
+				knob.setProperty("valMax", 180);
+
+				// Set initial value.
+				knob.setValue(0);
+
+				/*
+				 * Event listener.
+				 *
+				 * Parameter 'knob' is the knob object which was
+				 * actuated. Allows you to associate data with
+				 * it to discern which of your knobs was actuated.
+				 *
+				 * Parameter 'value' is the value which was set
+				 * by the user.
+				 */
+				const listener = function (knob, value) {
+					console.log(value);
+					sendCmd("d" + value.toString() + "\r\n");
+				};
+
+				knob.addListener(listener);
+
+				// Create element node.
+				const node = knob.node();
+
+				// Add it to the DOM.
+				const elem = document.getElementById("power");
+				elem.appendChild(node);
+			}
+
+			/*
+			 * This is executed after the document finished loading.
+			 */
+			function ready() {
+				demoKnob();
+			}
+
+			document.addEventListener("DOMContentLoaded", ready, false);
+			// ]]>
+		</script>
+	</body>
+
+	<style type="text/css">
+		body {
+			background: #c51a4a;
+			color: #ffffff;
+		}
+
+		img {
+			padding-bottom: 2em;
+		}
+
+		.container {
+			background: #c51a4a;
+			color: #ffffff;
+		}
+	</style>
+</html>
